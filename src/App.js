@@ -2,22 +2,27 @@ import React, { Component } from 'react';
 import { Route, Link } from 'react-router-dom';
 import BookmarkList from './components/BookmarkList';
 import BookmarkForm from './containers/BookmarkForm';
-import bookmarks from './data/bookmarks.json';
 import './App.css';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      bookmarks: []
+      bookmarks: [],
+      nextId: 1
     };
     this.addBookmark = this.addBookmark.bind(this);
   }
 
-  addBookmark(bookmark) {
-    this.setState(prevState => ({
-      bookmarks: [...prevState.bookmarks, bookmark]
-    }));
+  addBookmark(bookmarkData) {
+    this.setState(prevState => {
+      const { bookmarks, nextId } = prevState;
+      const bookmark = { ...bookmarkData, id: nextId };
+      return {
+        bookmarks: [...bookmarks, bookmark],
+        nextId: nextId + 1
+      };
+    });
   }
 
   render() {
