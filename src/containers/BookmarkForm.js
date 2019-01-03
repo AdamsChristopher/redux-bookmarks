@@ -6,7 +6,7 @@ class BookmarkForm extends Component {
     this.state = {
       url: '',
       label: ''
-    }
+    };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -17,7 +17,10 @@ class BookmarkForm extends Component {
   }
 
   handleSubmit(event) {
-    console.log(this.state);
+    event.preventDefault();
+    const { addBookmark } = this.props;
+    addBookmark(this.state);
+    this.setState({ url: '', label: '' })
   }
 
   render() {
