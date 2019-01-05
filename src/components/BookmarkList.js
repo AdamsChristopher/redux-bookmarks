@@ -1,5 +1,5 @@
 import React from 'react';
-import Bookmark from './Bookmark';
+import Bookmark from '../containers/Bookmark';
 
 const BookmarkList = ({ bookmarks }) => (
   <ul>

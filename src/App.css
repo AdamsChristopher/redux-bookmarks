@@ -4,11 +4,19 @@
   height: 100vh; */
 }
 
+li {
+  list-style-type: none; 
+}
+
+button {
+  border: none;
+  background: #dddddd;
+  border-radius: 4px;
+}
+
 a {
   color: #61dafb;
   padding: 10px;
 }
 
-li {
-  list-style-type: none; 
-}
+
