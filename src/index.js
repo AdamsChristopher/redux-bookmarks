@@ -8,7 +8,17 @@ import App from './App';
 import reducer from './reducers';
 import * as serviceWorker from './serviceWorker';
 
-const store = createStore(reducer);
+const persistedState = JSON.parse(localStorage.getItem('bookmarks'));
+
+const store = createStore(
+  reducer,
+  persistedState,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
+
+store.subscribe(() => {
+  localStorage.setItem('bookmarks', JSON.stringify(store.getState()));
+});
 
 ReactDOM.render(
   <Provider store={store}>

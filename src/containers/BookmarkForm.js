@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { addBookmark } from '../actions';
+import { map } from 'rsvp';
 
 class BookmarkForm extends Component {
   constructor(props) {
@@ -19,7 +22,8 @@ class BookmarkForm extends Component {
   handleSubmit(event) {
     event.preventDefault();
     const { addBookmark } = this.props;
-    addBookmark(this.state);
+    const { url, label } = this.state;
+    addBookmark(url, label);
     this.setState({ url: '', label: '' })
   }
 
@@ -51,4 +55,8 @@ class BookmarkForm extends Component {
   }
 }
 
-export default BookmarkForm;
+const mapDispatchToProps = (dispatch) => ({
+  addBookmark: (url, label) => dispatch(addBookmark(url, label))
+});
+
+export default connect(null, mapDispatchToProps)(BookmarkForm);
