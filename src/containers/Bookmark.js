@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { deleteBookmark } from '../actions';
 
@@ -11,6 +12,7 @@ const Bookmark = ({ id, url, label, deleteBookmark }) => (
     >
       {label}
     </a>
+    <Link to={`/edit-bookmark/${id}`}><button>Edit</button></Link>
     <button onClick={() => deleteBookmark(id)}>
       x
     </button>

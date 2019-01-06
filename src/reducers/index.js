@@ -1,6 +1,7 @@
 import {
   ADD_BOOKMARK,
-  DELETE_BOOKMARK
+  DELETE_BOOKMARK,
+  UPDATE_BOOKMARK
 } from '../actions';
 
 const initialState = {
@@ -22,6 +23,17 @@ const reducer = (state = initialState, action) => {
     case DELETE_BOOKMARK: {
       const bookmarks = state.bookmarks.filter(
         bookmark => bookmark.id !== action.id
+      );
+      return {
+        bookmarks, nextId: state.nextId
+      };
+    }
+    case UPDATE_BOOKMARK: {
+      const { id, url, label } = action;
+      const bookmarks = state.bookmarks.map(
+        bookmark => bookmark.id !== id
+          ? bookmark
+          : { ...bookmark, url, label }
       );
       return {
         bookmarks, nextId: state.nextId

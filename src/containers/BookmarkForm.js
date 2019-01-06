@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addBookmark } from '../actions';
-import { map } from 'rsvp';
+import { addBookmark, updateBookmark } from '../actions';
 
 class BookmarkForm extends Component {
   constructor(props) {
     super(props);
-    this.state = {
+    const { bookmark } = props;
+    this.state = bookmark ? bookmark : {
       url: '',
       label: ''
     };
@@ -21,14 +21,20 @@ class BookmarkForm extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const { addBookmark } = this.props;
+    const { addBookmark, updateBookmark, bookmark } = this.props;
     const { url, label } = this.state;
-    addBookmark(url, label);
+    if(!bookmark) {
+      addBookmark(url, label);
+    } 
+    else {
+      updateBookmark(bookmark.id, url, label);
+    }
     this.setState({ url: '', label: '' })
   }
 
   render() {
     const { url, label } = this.state;
+    const { bookmark } = this.props;
     return (
       <form onSubmit={this.handleSubmit}>
         <input
@@ -50,7 +56,7 @@ class BookmarkForm extends Component {
         <button
           type="submit"
         >
-          Add bookmark
+          {bookmark ? 'Update' : 'Add'} bookmark
         </button>
       </form>
     );
@@ -58,7 +64,8 @@ class BookmarkForm extends Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  addBookmark: (url, label) => dispatch(addBookmark(url, label))
+  addBookmark: (url, label) => dispatch(addBookmark(url, label)),
+  updateBookmark: (id, url, label) => dispatch(updateBookmark(id, url, label))
 });
 
 export default connect(null, mapDispatchToProps)(BookmarkForm);

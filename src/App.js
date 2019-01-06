@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Route, Link } from 'react-router-dom';
 import BookmarkListContainer from './containers/BookmarkListContainer';
 import BookmarkForm from './containers/BookmarkForm';
+import BookmarkEdit from './containers/BookmarkEdit';
+
 import './App.css';
 
 class App extends Component {
@@ -16,6 +18,11 @@ class App extends Component {
           path="/"
           exact
           component={BookmarkListContainer}
+        />
+        <Route
+          path="/edit-bookmark/:id"
+          exact
+          component={BookmarkEdit}
         />
         <Route
           path="/add-bookmark"
