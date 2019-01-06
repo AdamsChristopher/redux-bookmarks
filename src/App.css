@@ -1,22 +1,44 @@
 .App {
   text-align: center;
-  /* background: #282c34;
-  height: 100vh; */
+  background: #282c34;
+  height: 100vh;
 }
 
 li {
-  list-style-type: none; 
+  list-style-type: none;
+  text-align: left;
+  margin-top: 4px;
+}
+
+input {
+  border: none;
+  border-radius: 4px;
+  padding: 2px;
+  margin: 2px;
 }
 
 button {
   border: none;
-  background: #dddddd;
+  background: #cd0067;
   border-radius: 4px;
+}
+
+button:hover{
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+  background: #e29abe;
 }
 
 a {
   color: #61dafb;
   padding: 10px;
+  text-decoration: none;
+}
+
+a:hover {
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+  color: #699dac;  
 }
 
 

@@ -38,6 +38,7 @@ class BookmarkForm extends Component {
           placeholder="Bookmark link"
           onChange={this.handleChange}
         />
+        <br />
         <input
           type="text"
           name="label"
@@ -45,6 +46,7 @@ class BookmarkForm extends Component {
           placeholder="Bookmark label"
           onChange={this.handleChange}
         />
+        <br />
         <button
           type="submit"
         >
