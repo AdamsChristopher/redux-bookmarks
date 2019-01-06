@@ -12,7 +12,11 @@ const Bookmark = ({ id, url, label, deleteBookmark }) => (
     >
       {label}
     </a>
-    <Link to={`/edit-bookmark/${id}`}><button>Edit</button></Link>
+    <Link to={`/edit-bookmark/${id}`}>
+      <button>
+        Edit
+      </button>
+    </Link>
     <button onClick={() => deleteBookmark(id)}>
       x
     </button>

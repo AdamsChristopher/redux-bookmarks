@@ -10,7 +10,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div>
+        <div className="Menu">
           <Link to="/">Bookmarks</Link>
           <Link to="/add-bookmark">Add Bookmark</Link>
         </div>
