@@ -7,7 +7,7 @@ const BookmarkListContainer = ({ bookmarks }) => (
 );
 
 const mapStateToProps = state => ({
-  bookmarks: state.bookmarks
+  bookmarks: state.bookmarks.items
 });
 
 export default connect(mapStateToProps)(BookmarkListContainer);

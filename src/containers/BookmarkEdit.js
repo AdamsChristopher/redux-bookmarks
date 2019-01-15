@@ -9,7 +9,7 @@ const BookmarkEdit = ({ match, bookmarks }) => {
 }
 
 const mapStateToProps = state => ({
-  bookmarks: state.bookmarks
+  bookmarks: state.bookmarks.items
 });
 
 export default connect(mapStateToProps)(BookmarkEdit);
