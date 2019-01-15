@@ -4,21 +4,23 @@ import { connect } from 'react-redux';
 import { deleteTag } from '../actions';
 
 const Tag = ({ id, label, color, deleteTag }) => (
-  <li>
-    <span
-      style={{ padding: '2px', background: color }}
-    >
-      {label}
-    </span>
-    <Link to={`/edit-tag/${id}`}>
-      <button>
-        Edit
+  <div className="Tags">
+    <li>
+      <span
+        style={{ background: color }}
+      >
+        {label}
+      </span>
+      <Link to={`/edit-tag/${id}`}>
+        <button>
+          Edit
       </button>
-    </Link>
-    <button onClick={() => deleteTag(id)}>
-      x
+      </Link>
+      <button onClick={() => deleteTag(id)}>
+        x
     </button>
-  </li>
+    </li>
+  </div>
 );
 
 const mapDispatchToProps = dispatch => ({
