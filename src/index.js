@@ -8,7 +8,17 @@ import App from './App';
 import reducer from './reducers';
 import * as serviceWorker from './serviceWorker';
 
-const persistedState = JSON.parse(localStorage.getItem('bookmarks'));
+const initialState = {
+  bookmarks: {
+    items: [],
+    nextId: 1
+  },
+  tags: {
+    items: [],
+    nextId: 1
+  }
+};
+const persistedState = JSON.parse(localStorage.getItem('bookmarks')) || initialState;
 
 const store = createStore(
   reducer,
